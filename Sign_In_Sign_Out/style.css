@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: rgb(232, 227, 227);
+}
+ul {
+    background-color:#34b384;
+    height: 50px;
+}
+li {
+    display: inline-block;
+    color: aliceblue;
+    text-decoration: none;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+}
+ul li.active{
+    background: #33b;
+}
+li:hover {
+    color: black;
+    cursor: pointer;
+    /* background-color: darkgray; */
+}
+/* The Sign Up form Started Here */
+.form-unhidden {
+    display: block;
+}
+.sign_up {
+    margin-left: 25%;
+    margin-right: 30%;
+    margin-top: 5%;
+    background-color: beige;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.sign_up h2 {
+    margin-left: 35%;
+    padding-top: 30px;
+    font-weight: bolder;
+    color: #04AA6D;
+}
+.sign_up a {
+    margin-left: 8%;
+    text-decoration: none;
+    font-style: italic;
+    transition: 0.5s;
+    
+}
+.align-right {
+    float: right;
+    margin-right: 50px;
+}
+/* input {
+    display: block;
+} */
+input {
+    width: 45%;
+    padding: 10px;
+    margin: 15px;
+    margin-left: 25%;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+input[type=submit] {
+    background-color: #04AA6D;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    margin: 5px;
+    margin-left: 35%;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: none;
+    width: 20%;
+    height: 35px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+}
+input[type=submit]:hover {
+    background-color: darkgray;
+}
+.form-hidden {
+    display: none;
+}
+h5 {
+    color: rgb(215, 63, 37);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: italic;
+    margin-left: 30%;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+span#span1 {
+    font-size: 10px;
+    margin-left: 28%;
+    margin-top: 2%;
+    color: red;
+    font-weight: bold;
+    display: none;
+}
+span#span2 {
+    font-size: 10px;
+    position: absolute;
+    padding-top: 5px;
+    padding-left: 30px;
+    color: red;
+    font-weight: bold;
+    display: none;
+}
+span#pass1 {
+    font-size: 10px;
+    margin-left: 28%;
+    margin-top: 2%;
+    color: red;
+    font-weight: bold;
+    display: none;
+}
+span#pass2 {
+    font-size: 10px;
+    position: absolute;
+    padding-top: 5px;
+    padding-left: 40px;
+    color: orangered;
+    font-weight: bold;
+    display: none;
+}
+span#pass3 {
+    font-size: 10px;
+    margin-left: 28%;
+    margin-top: 2%;
+    color: red;
+    font-weight: bold;
+    display: none;
+}
+span#pass4 {
+    font-size: 10px;
+    margin-left: 28%;
+    margin-top: 2%;
+    color: red;
+    font-weight: bold;
+    display: none;
+}

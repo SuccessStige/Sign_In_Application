@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+</head>
+<body>
+    <!-- The Beginning of Nav-Bar -->
+    <div>
+        <ul class="list">
+            <li>Home</li>
+            <li>Menu</li>
+            <li>Portfolio</li>
+            <li>About</li>
+            <li>Contact Us</li>
+        </ul>
+    </div>
+    <!-- The End of Nav-Bar -->
+    <!-- The Sign Up Form Started from Here -->
+    <div class="sign_up">
+    <div id="Sign-up">        
+        <form class="form-unhidden sign-up_login" action="Sign-upPortal" method="POST">
+            <h2>Registeration Form</h2>
+            <input type="text" id="fName" name="fname" value="" placeholder="First Name" required> <br>
+            <h5 id="firstName" style="color: red;">**Your Firstname is required </h5> 
+            <input type="text" id="lName" name="lname" value="" placeholder="Last Name" required><br>
+            <h5 id="lastName" style="color: red;">**Your Lastname is required </h5>
+            <input type="email" id="email" required name="email" placeholder="Email Address"><br>
+            <span id="span1">Enter a Valid Email Address</span>
+            <span id="span2">This Field Cannot be Empty</span> 
+            <input type="tel" id="phoneNumber" name="Pno" placeholder="Phone Number" required><br>
+            <span id="pass4">Your Number must be 11 digit numbers.</span>
+            <input type="password" id="password" name="Pword" placeholder="Password" required><br>
+            <span id="pass1">Password does not meet the criteria.</span>
+            <span id="pass2">Password is too short</span><span id="pass4">Field can not be empty</span> 
+            <input type="password" id="confirmpassword" name="Cword" placeholder="Confirm Password" required> <br>
+            <span id="pass3">Your Password Doesn't Match</span> 
+            
+            <p class="change"><a class="align-right" href="#Change The Acct" id="LoginAcct">Already a Member Login</a></p> <br><br><br>
+
+            <input type="submit" id="Loginbtn" value="Register"> <br><br>
+            
+
+
+        </form>
+    </div>
+    <!-- The End of Sign Up Form -->
+    <!-- The Login Page Start Here -->
+        <form class="form-hidden sign-up_login login_forget" action="LoginPortal" method="POST">
+            <h2>Log In </h2>
+                <input type="email" id="login-input" name="email" placeholder="Email Address" required> <br>
+                <input type="password" id="login-input" name="Pword" placeholder="Password" required> <br>
+                <p class="change1"><a href="#Forget">Forget Password</a></p><p class="change"><a class="align-right" href="#Sign-up" id="linkAcct">I don't have Account Yet</a></p> <br><br><br>
+
+            <input type="submit" id="submit" value="Login"> <br><br>
+        </form>
+        <form class="form-hidden login_forget" action="LoginPortal" method="POST">
+            <h2>Log In </h2>
+                <input type="email" id="login-input" name="email" placeholder="Email Address" required> <br>
+                <input type="email" id="login-input" name="Pword" placeholder="Confirm Password" required> <br>
+                <p class="change1"><a class="align-right" href="#Change The Acct" id="LoginAcct">I Remember Login</a></p> <br><br><br>
+
+            <input type="submit" id="submit" value="Login"> <br><br>
+        </form>
+  </div>
+  <script>
+    // The Login Toggle start here 
+    $(document).ready(function(){
+        $('.change a').click(function(){
+            $('.sign-up_login').animate({height:"toggle", opacity:"toggle"}, "slow")
+        })
+        $('.change1 a').click(function(){
+            $('.login_forget').animate({height:"toggle", opacity:"toggle"}, "slow")
+        })
+    });
+    // The toggle Stop Here
+
+// Validation of Input form Start Here 
+// Document is ready 
+$(document).ready(function () { 
+    
+    // Validate First Name Field 
+    $("#firstName").hide(); 
+    let promptError = true; 
+    $("#fName").keyup(function () { 
+        validateFirstName(); 
+    }); 
+    
+    function validateFirstName() { 
+        let firstNameValue = $("#fName").val();
+        if (firstNameValue.length == "") { 
+            $("#firstName").show(); 
+            promptError = false; 
+            return false; 
+        } else if (firstNameValue.length <= 3  || firstNameValue.length > 10) { 
+            $("#firstName").show(); 
+            $("#firstName").html("your first Name must be between 3 and 10"); 
+            promptError = false; 
+            return false; 
+        } else { 
+            $("#firstName").hide(); 
+        } 
+    }
+    // Validate Last Name Field
+    $("#lastName").hide(); 
+    let secondPromptError = true; 
+    $("#lName").keyup(function () { 
+        validateLastName(); 
+    }); 
+    
+    function validateLastName() { 
+        let secondNameValue = $("#lName").val(); 
+        if (secondNameValue.length == "") { 
+            $("#lastName").show(); 
+            secondPromptError = false; 
+            return false; 
+        } else if (secondNameValue.length <= 3  || secondNameValue.length > 10) { 
+            $("#lastName").show(); 
+            $("#lastName").html("your Last Name must be between 3 and 10"); 
+            secondPromptError = false; 
+            return false; 
+        } else { 
+            $("#lastName").hide(); 
+        } 
+    }
+     // Validate Email  
+    var emailErro = true;
+    $('#email').focusout(function(){
+        emailValidation();
+    });
+
+    function emailValidation() {
+        var pattern = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+        var email = $('#email').val();
+
+        if (email !== '') {
+            if (pattern.test(email)) {
+                $('#email').css('border', '2px solid green');
+                $('#span1').css('display', 'none');
+                $('#span2').css('display', 'none');
+            }else{
+                $('#email').css('border' , '2px solid red');
+                $('#span1').css('display', 'block');
+                $('#span2').css('display', 'none');
+                emailErro = false;
+                return false;
+            }
+        }else {
+            $('#email').css('border', '2px solid red');
+            $('#span1').css('display', 'none');
+            $('#span2').css('display', 'block'); 
+            emailErro = false;
+            return false;        
+        }
+    }
+    
+    // Password Validation
+    var passError = true;
+    $('#password').focusout(function(){
+        passwordValidation();
+    });
+
+    function passwordValidation() {
+         var pass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
+         var password = $('#password').val();
+         
+         if (password !== '' && password.length >= 8) {
+            if (pass.test(password)) {
+                $('#password').css('border', '2px solid green');
+                $('#pass1').css('display', 'none');
+                $('#pass2').css('display', 'none');
+            }else {
+                $('#password').css('border', '2px solid red');
+                $('#pass1').css('display', 'block');
+                $('#pass2').css('display', 'none');
+                passError = false;
+                return false;
+            }
+        }else {
+            $('#password').css('border', '2px solid orangered');
+            $('#pass1').css('display', 'none');
+            $('#pass2').css('display', 'block');
+            passError = false;
+            return false;
+        }
+    }
+// Confirm Password VAlidation 
+    var conError = true;
+    $('#confirmpassword').focusout(function(){
+        confirmpasswordValidation();
+    });
+
+    function confirmpasswordValidation() {
+        var confirmPass = $('#confirmpassword').val();
+        var passwordValue = $('#password').val();
+
+        if(passwordValue == confirmPass) {
+            $('#confirmpassword').css('border', '2px solid green');
+            $('#pass3').css('display', 'none');
+        }else {
+            $('#confirmpassword').css('border', '2px solid red');
+            $('#pass3').css('display', 'block');
+            conError = false;
+            return false;
+
+        }
+
+    }
+    // Phone Number Validation 
+    var phoneError = true;
+    $('#phoneNumber').focusout(function(){
+        phoneNumberValidation();
+    })
+
+    function phoneNumberValidation() {
+        var phone = $('#phoneNumber').val();
+
+        if (phone.length != 11) {
+            $('#phoneNumber').css('border', '2px solid red');
+            $('#pass4').css('display', 'block');
+            phoneError = false;
+            return false;
+        }else{
+            $('#phoneNumber').css('border', '2px solid green');
+            $('#pass4').css('display', 'none');
+        }
+    }
+
+    // Submit Validation 
+    $("#Loginbtn").click(function (event) {
+        event.preventDefault();
+        
+        validateFirstName(); 
+        validateLastName();
+        emailValidation();
+        passwordValidation(); 
+        confirmpasswordValidation(); 
+        phoneNumberValidation(); 
+        if (validateFirstName == true && validateLastName == true && emailValidation == true &&
+            passwordValidation == true && confirmpasswordValidation == true && phoneNumberValidation == true) { 
+            alert('Successfully login'); 
+        } else { 
+            alert('Unsuccessful Login'); 
+        } 
+    }); 
+}); 
+</script>
+</body>
+</html>
